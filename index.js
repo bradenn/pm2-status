@@ -29,15 +29,16 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send(err);
 });
 
-app.listen(5552, () => {
-  console.log(`Started system monitoring front-end on port ${5552}`)
+let port = 5552;
+if(process.env.PORT) port = process.env.PORT;
+app.listen(port, () => {
+  console.log(`Front-end started, running on port ${port}.`);
 });
 
 module.exports = app;
