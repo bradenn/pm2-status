@@ -29,10 +29,9 @@ router.get('/', async (req, res) => {
             name: server.name,
             location: server.location,
             status: data,
-            err: (typeof data.code != 'undefined')
+            err: ((typeof data.code != 'undefined') || (data === "File Not Found"))
         };
     }));
-
     res.render('index', {servers: servers});
 });
 

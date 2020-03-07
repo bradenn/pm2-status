@@ -38,7 +38,10 @@ app.use(function(err, req, res, next) {
 let port = 5552;
 if(process.env.PORT) port = process.env.PORT;
 app.listen(port, () => {
-  console.log(`Front-end started, running on port ${port}.`);
+  console.log(`--------------------------------`);
+  console.log(`| Status Monitoring front-end  |`);
+  console.log(`| Copyright ©   |`);
+  console.log(`--------------------------------`);
 });
 
 module.exports = app;
