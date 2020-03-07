@@ -1,0 +1,19 @@
+{
+  "servers": [
+    {
+      "name": "bn-bhs-005",
+      "location":"Beauharnois, Quebec",
+      "url": "http://nossl.bradenn.com:5551/status"
+    },
+    {
+      "name": "bn-shs-001",
+      "location":"Vancouver, BC",
+      "url": "http://bn-shs.bradenn.com:5501/status"
+    },
+    {
+      "name": "bn-shs-002",
+      "location":"Vancouver, BC",
+      "url": "http://bn-shs.bradenn.com:5551/status"
+    }
+  ]
+}
