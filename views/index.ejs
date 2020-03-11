@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4a4edf243a.js" crossorigin="anonymous"></script>
@@ -21,16 +22,20 @@
                 <ul class="list-group">
                     <% if(!server.err){ JSON.parse(server.status).nodes.forEach(node => { %>
                         <li class="list-group-item d-flex justify-content-between">
-                            <%= node.name %>
-                            <%= (node.instance_id != null) ? node.instance_id + 1 : "" %>
-                            <%= (node.env) ? ` :: ${node.env}` : "" %>
+                            <span>
+                                <%= node.name %>
+                                <%= (node.instance_id != null) ? node.instance_id + 1 : "" %>
+                                <%= (node.env) ? ` :: ${node.env}` : "" %>
+                            </span>
                             <span class="d-flex">
                                     <small class="text-small" style="width: 6em;"><i
                                                 class="fas fa-memory"></i> <%= bytesToSize(node.ram) %></small>&nbsp;
                                     <small class="text-small" style="width: 6em;"><i
                                                 class="fas fa-microchip"></i> % <%= node.cpu %></small>&nbsp;
-                                    <span class="<%= (node.status == "online") ? "text-success" : "text-danger" %>"><i
-                                                class="fas fa-<%= (node.status == "online") ? "check" : "times" %>"></i></span>
+                                    <span class="d-flex">
+                                        <span class="<%= (node.status == "online") ? "text-success" : (node.status == "launching") ? "text-warning" : "text-danger" %>"><i
+                                                class="fas fa-<%= (node.status == "online") ? "check" : (node.status == "launching") ? "sync fa-spin" : "times" %>"></i></span>
+                                    </span>
                             </span>
                         </li>
                     <% }); }else{ %>
@@ -55,7 +60,7 @@
 <%
 function bytesToSize(bytes) {
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
-    if (bytes === 0) return 'n/a'
+    if (bytes === 0) return '0 B'
     const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10)
     if (i === 0) return `${bytes} ${sizes[i]})`
     return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`
