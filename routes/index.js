@@ -18,6 +18,9 @@ let getData = (url) => {
         }).on("error", (err) => {
             resolve(err);
         });
+        setTimeout(() => {
+            resolve('File Not Found');
+        }, 500)
     });
 };
 
