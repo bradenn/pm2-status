@@ -20,7 +20,7 @@ let getData = (url) => {
         });
         setTimeout(() => {
             resolve('File Not Found');
-        }, 500)
+        }, 1000)
     });
 };
 

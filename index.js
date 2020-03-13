@@ -39,7 +39,7 @@ let port = 5552;
 app.listen(port, () => {
   console.log(`--------------------------------`);
   console.log(`| Status Monitoring front-end  |`);
-  console.log(`| Copyright ©  ${port}           |`);
+  console.log(`| Copyright ©  ${port}            |`);
   console.log(`--------------------------------`);
 });
 

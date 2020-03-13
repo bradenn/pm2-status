@@ -9,15 +9,16 @@
     <title>BN Media Systems</title>
 </head>
 <body>
-<div class="container">
-    <div class="row d-flex justify-content-center">
-        <div class="col-6 pt-4">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 pt-4"></div>
+        <div class="col-md-6 pt-4">
             <h1>System Status</h1>
             <p>BN Media Services</p>
             <hr>
             <% servers.forEach(server => { %>
-                <h3 class="d-flex justify-content-between"><%= server.name %> <span><%= server.location %></span>
-                </h3>
+                <h4 class="d-flex justify-content-between align-items-end"><%= server.name %> <span style="font-size:70%;"><%= server.location %></span>
+                </h4>
                 <ul class="list-group">
                     <% if(!server.err){ JSON.parse(server.status).nodes.forEach(node => { %>
                         <li class="list-group-item d-flex justify-content-between">
@@ -49,6 +50,7 @@
 
             <% }); %>
         </div>
+        <div class="col-md-3 pt-4"></div>
         <br>
     </div>
 </div>
